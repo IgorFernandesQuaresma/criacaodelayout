@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100px; 
     color: var(--saffron);
     border-radius: 5px;
-    height: 30px;
+    height: 25px;
     border: solid var(--saffron) 1px;
     background: transparent;
     align-self: center;
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100px; 
     color: var(--saffron);
     border-radius: 5px;
-    height: 30px;
+    height: 25px;
     border: solid var(--saffron) 1px;
     background: transparent;
     align-self: center;
