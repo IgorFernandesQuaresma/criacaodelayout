@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+:root {
+
+    --platinum: #cfdbd5ff;
+    --alabaster: #e8eddfff;
+    --saffron: #f5cb5cff;
+    --eerie-black: rgb(0, 0, 0);
+    --jet: #333533ff;
+
+}
+
+body {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--eerie-black);
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    box-sizing: border-box; 
+    padding: 30px;
+    min-height: calc(100vh - 100px);
+}
+.cabecalho {
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+}
+
+.cabecalho__titulo {
+    color: var(--alabaster);
+    text-align: left;
+}
+
+.cabecalho__paragrafo {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--platinum);
+    font-size: larger;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.cabecalho__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.cabecalho__lista__item {
+    
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.cabecalho__lista__item a {
+
+    text-decoration: none;
+    color: var(--saffron);
+}
+
+.cabecalho__lista__item a:hover {
+
+    color: var(--alabaster);
+}
+
+.tarefas {
+    width: 60%;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: rgba(51, 53, 51, 0.42);
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 5px 8px 15px -8px rgba(232,237,223,1);
+    -moz-box-shadow: 5px 8px 15px -8px rgba(232,237,223,1);
+    box-shadow: 5px 8px 15px -8px rgba(232,237,223,1);
+    
+    
+}
+
+.tarefas__titulo {
+    color: var(--alabaster);
+    text-align: center;
+}
+
+.tarefas__container {
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    
+   
+}
+
+.tarefas__container__container {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.tarefas__titulo {
+    box-sizing: border-box;
+}
+
+.tarefas__titulo__titulo {
+    color: var(--alabaster);
+    text-align: center;
+    box-sizing: border-box;
+   
+}
+
+.tarefas__lista__item {
+    color: var(--platinum);
+    list-style: none; 
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    justify-content: space-around;
+}
+
+#btn__remover {
+    width: 100px; 
+    color: var(--saffron);
+    border-radius: 5px;
+    height: 30px;
+    border: solid var(--saffron) 1px;
+    background: transparent;
+    align-self: center;
+    margin: 20px 0 20px 0;
+}
+#btn__remover:hover {
+    color: var(--alabaster);
+}
+
+#btn__editar {
+    width: 100px; 
+    color: var(--saffron);
+    border-radius: 5px;
+    height: 30px;
+    border: solid var(--saffron) 1px;
+    background: transparent;
+    align-self: center;
+    margin: 20px 0 20px 0;
+}
+
+#btn__editar:hover {
+    color: var(--alabaster);
+}
+
+
+.cabecalho__formulario {
+    display: flex;
+    flex-direction: column; 
+}
+
+.cabecalho__formulario__titulo {
+    color: var(--alabaster);
+    text-align: left;
+    font-size: 24px
+}
+
+.cabecalho__formulario label {
+    margin-bottom: 5px; 
+    text-align: left;
+    color: var(--platinum);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.cabecalho__formulario textarea,
+.cabecalho__formulario select {
+    width: 300px; 
+    font-family: 'Open Sans', sans-serif;
+    color: var(--platinum);
+    background-color: var(--eerie-black);
+    box-sizing: border-box;
+    border-radius: 5px;
+    resize: none;
+    padding: 5px; 
+    margin-bottom: 10px; 
+}
+
+.cabecalho__formulario__botao {
+    width: 150px; 
+    color: var(--saffron);
+    border-radius: 5px;
+    height: 30px;
+    border: solid var(--saffron) 1px;
+    background: transparent;
+    align-self: center;
+    margin: 20px 0 20px 0;
+}
+
+.cabecalho__formulario__botao:hover {
+
+    color: var(--alabaster);
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    text-align: center;
+    color: var(--alabaster);
+    background-color: rgba(51, 53, 51, 0.42);
+    font-size: 8px;
+}
+
+footer h1 {
+        margin: 0; 
+        line-height: 100px
+
+}

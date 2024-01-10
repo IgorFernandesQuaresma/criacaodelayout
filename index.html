@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Lista de Tarefas</title>
+</head>
+
+
+<body>
+    
+<section class="container">
+
+    <section class="cabecalho">
+        <img class="cabecalho__img" src="./imagens/aceleradora_gil_logo-removebg-preview.png" alt="Logo aceleradora ágil">
+        <h1 class="cabecalho__titulo">Layout de Tarefas</h1>
+        <p class="cabecalho__paragrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa hic veritatis ea, optio, saepe minima eos quas ipsam, quisquam quasi tempora? 
+            Aspernatur esse impedit provident adipisci fugiat, 
+            maxime dolore quidem.
+        </p>
+
+        <form class="cabecalho__formulario" action="#" method="post">
+
+            <h1 class="cabecalho__formulario__titulo">Adicione uma nova tarefa</h1>
+
+            <label class="cabecalho__formulario__texto" for="tarefa">Tarefa:</label>
+            <textarea id="tarefa" name= "tarefa" rows="1" required></textarea>
+    
+            <label class="cabecalho__formulario__periodo" for="periodo">Período:</label>
+            <select id="periodo" name="periodo">
+                <option value="dia">Dia</option>
+                <option value="noite">Noite</option>
+            </select>
+    
+            <button class="cabecalho__formulario__botao">Adicionar Tarefa</button>
+        </form>
+
+        <ul class="cabecalho__lista">
+            <li class="cabecalho__lista__item"><a href="https://www.linkedin.com/in/ifernandesq/">Linkedin</a></li>
+            <li class="cabecalho__lista__item" ><a href="https://github.com/IgorFernandesQuaresma">Github</a></li>
+        </ul>
+
+    </section>
+
+    <section class="tarefas">
+
+        
+        <h1 class="tarefas__titulo">Lista de tarefas</h1>
+        
+    <div class="tarefas__container">
+
+    <div class="tarefas__container__container">
+        
+            <h1 class="tarefas__titulo__titulo">Dia</h1>
+
+    <ul class="tarefas__lista">
+        <li class="tarefas__lista__item">Teste
+            <button id="btn__remover">Remover</button>
+            <button id="btn__editar">Editar</button>
+        </li>
+
+    </ul>
+
+    </div>
+
+    <div class="tarefas__container__container">
+            <h1 class="tarefas__titulo__titulo">Noite</h1>
+
+    <ul class="tarefas__lista">
+        <li class="tarefas__lista__item">Teste
+            <button id="btn__remover">Remover</button>
+            <button id="btn__editar">Editar</button>
+        </li>
+        
+    </ul>
+
+</div>
+
+</div>
+
+    </section>
+
+</section>
+    <script src="./script.js"></script>
+</body>
+
+<footer>
+    <h1>Desenvolvido por Igor Fernandes Quaresma </h1>
+</footer>
+</html>
