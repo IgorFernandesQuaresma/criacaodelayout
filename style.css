@@ -136,7 +136,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #btn__remover {
-    width: 100px; 
+    width: 80px; 
+    font-size: 13px; 
     color: var(--saffron);
     border-radius: 5px;
     height: 25px;
@@ -150,7 +151,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #btn__editar {
-    width: 100px; 
+    width: 80px;
+    font-size: 13px;  
     color: var(--saffron);
     border-radius: 5px;
     height: 25px;

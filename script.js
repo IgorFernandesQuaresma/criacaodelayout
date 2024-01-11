@@ -4,35 +4,58 @@ let ulTarefasNoite = document.querySelector('#tarefas__noite')
 let valoresDia = JSON.parse(localStorage.getItem('valoresDia')) || [];
 let valoresNoite = JSON.parse(localStorage.getItem('valoresNoite')) || [];
 
-console.log(ulTarefasDia, ulTarefasDia)
-
-
-
-
-
 //função que cria o elemento
-function criarLi(tarefa, periodo) {
+function criarLi(tarefa) {
 
-      const liTarefasDia = document.createElement('li')
-      liTarefasDia.classList.add('tarefas__lista__item')
-      liTarefasDia.innerHTML = "fiz com DOM" + ' '
+      const liTarefas = document.createElement('li')
+      liTarefas.classList.add('tarefas__lista__item')
+      liTarefas.innerHTML = tarefa + ' '
 
       const btnRemover = document.createElement('button')
       btnRemover.innerHTML = 'Remover'
       btnRemover.setAttribute('id', 'btn__remover')
 
+      btnRemover.onclick = () => {
+        liTarefas.remove()
+        removerTarefaDoLocalStorage(tarefa, periodo);
+      }
+
       const btnEditar = document.createElement('button')
       btnEditar.innerHTML = 'Editar' 
       btnEditar.setAttribute('id', 'btn__editar')
 
-      liTarefasDia.appendChild(btnRemover)
-      liTarefasDia.appendChild(document.createTextNode(' '));
-      liTarefasDia.appendChild(btnEditar)
+      liTarefas.appendChild(btnRemover)
+      liTarefas.appendChild(document.createTextNode(' '));
+      liTarefas.appendChild(btnEditar)
 
-      ulTarefasDia.appendChild(liTarefasDia)
+      return liTarefas;     
 }
 
 criarLi();
+
+function exibirDadosSalvos() {
+    valoresDia.forEach(item => {
+        const liTarefas = criarLi(item.tarefa, item.periodo);
+
+        if (item.periodo === "dia") {
+            ulTarefasDia.appendChild(liTarefas);
+        } else {
+            ulTarefasNoite.appendChild(liTarefas);
+        }
+    });
+
+    valoresNoite.forEach(item => {
+        const liTarefas = criarLi(item.tarefa, item.periodo);
+
+        if (item.periodo === "dia") {
+            ulTarefasDia.appendChild(liTarefas);
+        } else {
+            ulTarefasNoite.appendChild(liTarefas);
+        }
+    });
+}
+
+exibirDadosSalvos()
 
 function atualizarDados() {
     localStorage.setItem('valoresDia', JSON.stringify(valoresDia));
@@ -40,6 +63,25 @@ function atualizarDados() {
 
 }
 
+function removerTarefaDoLocalStorage(tarefa, periodo) {
+    if (periodo === 'dia') {
+        // Remover do array valoresDia
+        const i = valoresDia.findIndex(item => item.tarefa === tarefa);
+        if (i !== -1) {
+            valoresDia.splice(i, 1);
+            atualizarDados();
+        }
+    } else {
+        // Remover do array valoresNoite
+        const i = valoresNoite.findIndex(item => item.tarefa === tarefa);
+        if (i !== -1) {
+            valoresNoite.splice(i, 1);
+            atualizarDados();
+        }
+    }
+}
+
+2
 function salvarDados() {
     const inputTarefa = document.querySelector('#tarefa');
     const selectPeriodo = document.querySelector('#periodo');
@@ -48,7 +90,7 @@ function salvarDados() {
     botaoAdicionar.addEventListener('click', function(event) {
         event.preventDefault();
         const valorTarefa = inputTarefa.value;
-        const valorPeriodo = selectPeriodo.value;
+        let valorPeriodo = selectPeriodo.value;
 
         if (valorPeriodo === '' || valorTarefa === '') {
             
@@ -62,6 +104,8 @@ function salvarDados() {
             };
 
             valoresDia.push(novaTarefaDia);
+            const novaTarefaD = criarLi(novaTarefaDia.tarefa, novaTarefaDia.periodo)
+            ulTarefasDia.appendChild(novaTarefaD);
         } else {
             let novaTarefaNoite = {
                 tarefa: valorTarefa,
@@ -69,6 +113,8 @@ function salvarDados() {
             };
 
             valoresNoite.push(novaTarefaNoite);
+            const novaTarefaN = criarLi(novaTarefaNoite.tarefa, novaTarefaNoite.periodo)
+            ulTarefasNoite.appendChild(novaTarefaN);
         }
 
         atualizarDados()
@@ -77,4 +123,3 @@ function salvarDados() {
 
 salvarDados()
 
-console.log(valoresNoite)
