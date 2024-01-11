@@ -1,51 +1,64 @@
 let ulTarefasDia = document.querySelector('#tarefas__dia')
 let ulTarefasNoite = document.querySelector('#tarefas__noite')
 
-let valoresDia = JSON.parse(localStorage.getItem('valoresDia')) || [];
-let valoresNoite = JSON.parse(localStorage.getItem('valoresNoite')) || [];
+let valores = JSON.parse(localStorage.getItem('valores')) || [];
 
 //função que cria o elemento
-function criarLi(tarefa) {
+function criarLi(tarefa, periodo, index) {
+    const liTarefas = document.createElement('li');
+    liTarefas.classList.add('tarefas__lista__item');
+    liTarefas.innerHTML = tarefa + ' ';
 
-      const liTarefas = document.createElement('li')
-      liTarefas.classList.add('tarefas__lista__item')
-      liTarefas.innerHTML = tarefa + ' '
+    const btnRemover = document.createElement('button');
+    btnRemover.innerHTML = 'Remover';
+    btnRemover.setAttribute('id', 'btn__remover');
 
-      const btnRemover = document.createElement('button')
-      btnRemover.innerHTML = 'Remover'
-      btnRemover.setAttribute('id', 'btn__remover')
+    btnRemover.onclick = () => {
+        liTarefas.remove();
+        console.log('Índice:', index);
 
-      btnRemover.onclick = () => {
-        liTarefas.remove()
-        removerTarefaDoLocalStorage(tarefa, periodo);
-      }
+        // Encontrar o índice novamente no array valores
+        const indexValores = valores.findIndex(item => item.tarefa === tarefa);
+        if (indexValores !== -1) {
+            valores.splice(indexValores, 1);
+            atualizarDados();
+        } else {
+            alert('Não foi possível remover o item.');
+        }
+    };
 
-      const btnEditar = document.createElement('button')
-      btnEditar.innerHTML = 'Editar' 
-      btnEditar.setAttribute('id', 'btn__editar')
+    const btnEditar = document.createElement('button');
+    btnEditar.innerHTML = 'Editar';
+    btnEditar.setAttribute('id', 'btn__editar');
 
-      liTarefas.appendChild(btnRemover)
-      liTarefas.appendChild(document.createTextNode(' '));
-      liTarefas.appendChild(btnEditar)
+    btnEditar.onclick = () => {
+        const tarefaNova = prompt('Digite uma nova tarefa');
+        const periodoNovo = prompt('Qual periodo (dia ou noite)');
 
-      return liTarefas;     
+        liTarefas.textContent = tarefaNova;
+        // Encontrar o índice novamente no array valores
+        const indexValores = valores.findIndex(item => item.tarefa === tarefa);
+        if (indexValores !== -1) {
+            valores[indexValores].tarefa = tarefaNova + ' ';
+            valores[indexValores].periodo = periodoNovo;
+            atualizarDados();
+        } else {
+            alert('Não foi possível editar o item.');
+        }
+    };
+
+    liTarefas.appendChild(btnRemover);
+    liTarefas.appendChild(document.createTextNode(' '));
+    liTarefas.appendChild(btnEditar);
+
+    return liTarefas;
 }
 
-criarLi();
+
 
 function exibirDadosSalvos() {
-    valoresDia.forEach(item => {
-        const liTarefas = criarLi(item.tarefa, item.periodo);
-
-        if (item.periodo === "dia") {
-            ulTarefasDia.appendChild(liTarefas);
-        } else {
-            ulTarefasNoite.appendChild(liTarefas);
-        }
-    });
-
-    valoresNoite.forEach(item => {
-        const liTarefas = criarLi(item.tarefa, item.periodo);
+    valores.forEach((item, index) => {
+        const liTarefas = criarLi(item.tarefa, item.periodo, index);
 
         if (item.periodo === "dia") {
             ulTarefasDia.appendChild(liTarefas);
@@ -58,30 +71,11 @@ function exibirDadosSalvos() {
 exibirDadosSalvos()
 
 function atualizarDados() {
-    localStorage.setItem('valoresDia', JSON.stringify(valoresDia));
-    localStorage.setItem('valoresNoite', JSON.stringify(valoresNoite));
+    localStorage.setItem('valores', JSON.stringify(valores));
+
 
 }
 
-function removerTarefaDoLocalStorage(tarefa, periodo) {
-    if (periodo === 'dia') {
-        // Remover do array valoresDia
-        const i = valoresDia.findIndex(item => item.tarefa === tarefa);
-        if (i !== -1) {
-            valoresDia.splice(i, 1);
-            atualizarDados();
-        }
-    } else {
-        // Remover do array valoresNoite
-        const i = valoresNoite.findIndex(item => item.tarefa === tarefa);
-        if (i !== -1) {
-            valoresNoite.splice(i, 1);
-            atualizarDados();
-        }
-    }
-}
-
-2
 function salvarDados() {
     const inputTarefa = document.querySelector('#tarefa');
     const selectPeriodo = document.querySelector('#periodo');
@@ -98,22 +92,22 @@ function salvarDados() {
         }
 
         if (valorPeriodo === 'dia') {
-            let novaTarefaDia = {
+            const novaTarefa = {
                 tarefa: valorTarefa,
                 periodo: valorPeriodo
             };
 
-            valoresDia.push(novaTarefaDia);
-            const novaTarefaD = criarLi(novaTarefaDia.tarefa, novaTarefaDia.periodo)
+            valores.push(novaTarefa);
+            const novaTarefaD = criarLi(novaTarefa.tarefa, novaTarefa.periodo)
             ulTarefasDia.appendChild(novaTarefaD);
         } else {
-            let novaTarefaNoite = {
+            const novaTarefa = {
                 tarefa: valorTarefa,
                 periodo: valorPeriodo
             };
 
-            valoresNoite.push(novaTarefaNoite);
-            const novaTarefaN = criarLi(novaTarefaNoite.tarefa, novaTarefaNoite.periodo)
+            valores.push(novaTarefa);
+            const novaTarefaN = criarLi(novaTarefa.tarefa, novaTarefa.periodo)
             ulTarefasNoite.appendChild(novaTarefaN);
         }
 
