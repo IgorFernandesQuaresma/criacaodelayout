@@ -18,7 +18,7 @@ Durante a execução do projeto, pude aplicar meu conhecimento em métodos de ar
 
 ## Responsividade
 
-Embora o projeto inicialmente eu não tenha incluido nenhuma biblioteca de CSS como Brootstrap, pois resolvi focar na lógica, como sobrou tempo eu resolvi aplicar uma responsividade ali com CSS puro mesmo. Para enriquecer ainda mais a experiência do usuário. Coisa simples, mas interessante deixar as coisas com a harmonia que o cliente precisa.
+Embora inicialmente eu não tenha incluido nenhuma biblioteca de CSS como Brootstrap, pois, resolvi focar na lógica, me sobrou tempo e resolvi aplicar uma responsividade ali com CSS puro mesmo. Para enriquecer ainda mais a experiência do usuário. Coisa simples, mas interessante deixar as coisas com a harmonia que o cliente precisa.
 
 ## Agradecimento
 
